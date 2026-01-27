@@ -1,33 +1,33 @@
-import CoffeeCard from "../../components/CoffeeCard/CoffeeCard";
 import styles from "./Menu.module.css";
+import CoffeeCard from "../../components/CoffeeCard/CoffeeCard";
 
 const coffees = [
   {
     id: 1,
     name: "Espresso",
     price: 2.99,
-    description: "Strong coffee",
-    image: "/coffee1.png",
+    desc: "Strong coffee",
   },
   {
     id: 2,
     name: "Latte",
     price: 4.29,
-    description: "Milk coffee",
-    image: "/coffee2.png",
+    desc: "With milk",
   },
 ];
 
-export default function Menu() {
-  const addToCart = (coffee) => {
-    console.log("Added:", coffee);
-  };
-
+function Menu() {
   return (
-    <div className={styles.grid}>
-      {coffees.map((c) => (
-        <CoffeeCard key={c.id} coffee={c} addToCart={addToCart} />
-      ))}
+    <div>
+      <h1 className={styles.title}>Coffee Selection</h1>
+
+      <div className={styles.grid}>
+        {coffees.map((item) => (
+          <CoffeeCard key={item.id} coffee={item} />
+        ))}
+      </div>
     </div>
   );
 }
+
+export default Menu;

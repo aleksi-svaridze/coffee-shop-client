@@ -1,22 +1,32 @@
 import styles from "./CoffeeCard.module.css";
 import { Link } from "react-router-dom";
 
-export default function CoffeeCard({ coffee, addToCart }) {
+function CoffeeCard({ coffee }) {
   return (
     <div className={styles.card}>
-      <img src={coffee.image} alt={coffee.name} />
+      <div className={styles.image}></div>
 
-      <h3>{coffee.name}</h3>
-      <p>{coffee.description}</p>
-      <span>${coffee.price}</span>
+      <div className={styles.body}>
+        <h3 className={styles.name}>{coffee.name}</h3>
 
-      <div className={styles.actions}>
-        <button onClick={() => addToCart(coffee)}>Add to Cart</button>
+        <p className={styles.desc}>{coffee.desc}</p>
 
-        <Link to={`/details/${coffee.id}`}>
-          <button>Details</button>
-        </Link>
+        <div className={styles.price}>${coffee.price}</div>
+
+        <div className={styles.buttons}>
+          <button className={`${styles.btn} ${styles.cart}`}>
+            Add to Cart
+          </button>
+
+          <Link to={`/details/${coffee.id}`}>
+            <button className={`${styles.btn} ${styles.details}`}>
+              Details
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
 }
+
+export default CoffeeCard;
