@@ -1,21 +1,33 @@
 import { useState } from "react";
-import { convertToGEL } from "../../services/currency";
+import styles from "./CurrencySwitch.module.css";
+import { convertUSDToGEL } from "../../services/currensy";
 
-export default function CurrencySwitch({ price }) {
-  const [gel, setGel] = useState(null);
+function CurrencySwitch({ total }) {
+  const [currency, setCurrency] = useState("USD");
+  const [converted, setConverted] = useState(null);
 
-  const convert = async () => {
-    const result = await convertToGEL(price);
-    setGel(result);
-  };
+  async function handleConvert() {
+    if (currency === "USD") {
+      const gel = await convertUSDToGEL(total);
+      setConverted(gel.toFixed(2));
+      setCurrency("GEL");
+    } else {
+      setCurrency("USD");
+      setConverted(null);
+    }
+  }
 
   return (
-    <div>
-      <span>${price}</span>
+    <div className={styles.box}>
+      <p>
+        Total: {currency === "USD" ? `$${total.toFixed(2)}` : `${converted} ₾`}
+      </p>
 
-      {gel && <span> / ₾{gel}</span>}
-
-      <button onClick={convert}>Convert</button>
+      <button onClick={handleConvert}>
+        Switch to {currency === "USD" ? "GEL" : "USD"}
+      </button>
     </div>
   );
 }
+
+export default CurrencySwitch;
