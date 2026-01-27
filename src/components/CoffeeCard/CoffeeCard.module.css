@@ -1,13 +1,16 @@
 .card {
   background: white;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .image {
-  height: 140px;
-  background: #e7b79b;
+  height: 180px;
+  background-color: #e5b299;
+  background-size: cover;
+  background-position: center;
 }
 
 .body {
@@ -15,37 +18,46 @@
 }
 
 .name {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1.2rem;
+  color: #7d5a50;
+  margin-bottom: 5px;
 }
 
 .desc {
-  font-size: 14px;
-  color: gray;
-  margin: 8px 0;
+  font-size: 0.9rem;
+  color:#777;
+  margin-bottom: 10px;
+  height: 40px;
+  overflow: hidden;
 }
 
 .price {
+ margin-right: 10px;
   font-weight: bold;
-  color: #a15c3a;
+  color: #b4846c;
 }
 
 .buttons {
   display: flex;
   gap: 10px;
-  margin-top: 15px;
-}
+ }
 
 .btn {
   flex: 1;
   border: none;
-  padding: 8px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 12px;
   cursor: pointer;
+  font-size: 0.9rem;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart {
-  background: #7d5a50;
+  background:#7d5a50;
   color: white;
 }
 
