@@ -30,6 +30,8 @@ function CurrencySwitch({ priceUSD, currency, setCurrency, setPrice }) {
       >
         <option value="USD">USD ($)</option>
         <option value="GEL">GEL (₾)</option>
+        <option value="GBP">GBP (£)</option>
+        <option value="EUR">EUR (€)</option>
       </select>
     </div>
   );

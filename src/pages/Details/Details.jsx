@@ -59,19 +59,19 @@ function Details() {
       <div className={styles.header}>
         <h2>Coffee Details</h2>
         <div className={styles.currencySelector}>
-          <CurrencySwitch priceUSD={coffee.price} />
-        </div>
-      </div>
-      <div className={styles.coffeeDetails}>
-        <div className={styles.coffeeDetailsImage}></div>
-        <div className={styles.coffeeDetailsInfo}>
-          <h1>{coffee.name}</h1>
           <CurrencySwitch
             priceUSD={coffee.price}
             currency={currency}
             setCurrency={setCurrency}
             setPrice={setPrice}
           />
+        </div>
+      </div>
+      <div className={styles.coffeeDetails}>
+        <div className={styles.coffeeDetailsImage}></div>
+        <div className={styles.coffeeDetailsInfo}>
+          <h1>{coffee.name}</h1>
+
           <p className={styles.price}>
             {price.toFixed(2)} {currency}
           </p>
