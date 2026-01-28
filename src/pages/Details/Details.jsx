@@ -1,5 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import styles from "./Details.module.css";
+import CurrencySwitch from "../../components/CurrencySwitch/CurrencySwitch";
+import { useState } from "react";
 
 const coffees = [
   {
@@ -43,7 +45,9 @@ const coffees = [
 function Details() {
   const { id } = useParams();
 
-  // გადაყვანა number-ში
+  const [currency, setCurrency] = useState("USD");
+  const [price, setPrice] = useState(0);
+
   const coffee = coffees.find((item) => item.id === Number(id));
 
   if (!coffee) {
@@ -51,19 +55,33 @@ function Details() {
   }
 
   return (
-    <div className={styles.container}>
-      <h1>{coffee.name}</h1>
-
-      <p className={styles.price}>${coffee.price}</p>
-
-      <p className={styles.desc}>{coffee.desc}</p>
-
-      <button>Add to Cart</button>
-
-      <br />
-      <br />
-
-      <Link to="/">← Back to Menu</Link>
+    <div className={styles.coffeeDetailsContainer}>
+      <div className={styles.header}>
+        <h2>Coffee Details</h2>
+        <div className={styles.currencySelector}>
+          <CurrencySwitch priceUSD={coffee.price} />
+        </div>
+      </div>
+      <div className={styles.coffeeDetails}>
+        <div className={styles.coffeeDetailsImage}></div>
+        <div className={styles.coffeeDetailsInfo}>
+          <h1>{coffee.name}</h1>
+          <CurrencySwitch
+            priceUSD={coffee.price}
+            currency={currency}
+            setCurrency={setCurrency}
+            setPrice={setPrice}
+          />
+          <p className={styles.price}>
+            {price.toFixed(2)} {currency}
+          </p>
+          <p className={styles.desc}>{coffee.desc}</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+      <div className="action">
+        <Link to="/">← Back to Menu</Link>
+      </div>
     </div>
   );
 }

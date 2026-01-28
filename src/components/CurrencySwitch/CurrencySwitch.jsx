@@ -1,31 +1,36 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import styles from "./CurrencySwitch.module.css";
-import { convertUSDToGEL } from "../../services/currensy";
+import { convertUSDToGEL } from "../../services/currency";
 
-function CurrencySwitch({ total }) {
-  const [currency, setCurrency] = useState("USD");
-  const [converted, setConverted] = useState(null);
+function CurrencySwitch({ priceUSD, currency, setCurrency, setPrice }) {
+  useEffect(() => {
+    async function convert() {
+      if (currency === "USD") {
+        setPrice(priceUSD);
+        return;
+      }
 
-  async function handleConvert() {
-    if (currency === "USD") {
-      const gel = await convertUSDToGEL(total);
-      setConverted(gel.toFixed(2));
-      setCurrency("GEL");
-    } else {
-      setCurrency("USD");
-      setConverted(null);
+      if (currency === "GEL") {
+        const gel = await convertUSDToGEL(priceUSD);
+        setPrice(gel);
+      }
     }
-  }
+
+    convert();
+  }, [currency, priceUSD, setPrice]);
 
   return (
-    <div className={styles.box}>
-      <p>
-        Total: {currency === "USD" ? `$${total.toFixed(2)}` : `${converted} ₾`}
-      </p>
+    <div className={styles.wrapper}>
+      <span>Currency:</span>
 
-      <button onClick={handleConvert}>
-        Switch to {currency === "USD" ? "GEL" : "USD"}
-      </button>
+      <select
+        value={currency}
+        onChange={(e) => setCurrency(e.target.value)}
+        className={styles.select}
+      >
+        <option value="USD">USD ($)</option>
+        <option value="GEL">GEL (₾)</option>
+      </select>
     </div>
   );
 }

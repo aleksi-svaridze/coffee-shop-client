@@ -1,18 +1,23 @@
-.box {
-  margin-top: 20px;
-  background: #fdf6f0;
-  padding: 15px;
-  border-radius: 10px;
+.wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  margin: 15px 0;
 }
 
-button {
-  background: #7d5a50;
-  color: white;
-  border: none;
-  padding: 6px 12px;
+.select {
+  padding: 6px 10px;
   border-radius: 6px;
+  border: 1px solid #ccc;
   cursor: pointer;
 }
+
+.select:focus {
+  border-color: #7d5a50;
+  outline: none;
+}
+
+.price {
+  font-weight: bold;
+}
+
