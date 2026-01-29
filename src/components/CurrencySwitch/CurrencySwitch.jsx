@@ -1,38 +1,58 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "./CurrencySwitch.module.css";
 import { convertUSDToGEL } from "../../services/currency";
 
-function CurrencySwitch({ priceUSD, currency, setCurrency, setPrice }) {
+function CurrencySwitch({ total = 0 }) {
+  const [currency, setCurrency] = useState("USD");
+  const [converted, setConverted] = useState(0);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     async function convert() {
-      if (currency === "USD") {
-        setPrice(priceUSD);
-        return;
-      }
+      try {
+        setLoading(true);
 
-      if (currency === "GEL") {
-        const gel = await convertUSDToGEL(priceUSD);
-        setPrice(gel);
+        if (currency === "USD") {
+          setConverted(total);
+        } else {
+          const gel = await convertUSDToGEL(total);
+          setConverted(gel);
+        }
+      } catch (err) {
+        console.error("Convert error:", err);
+        setConverted(total);
+      } finally {
+        setLoading(false);
       }
     }
 
     convert();
-  }, [currency, priceUSD, setPrice]);
+  }, [currency, total]);
 
   return (
-    <div className={styles.wrapper}>
-      <span>Currency:</span>
+    <div>
+      <div className={styles.currencySelector}>
+        <label htmlFor="currency">Currency:</label>
+        <select
+          className={styles.select}
+          value={currency}
+          onChange={(e) => setCurrency(e.target.value)}
+        >
+          <option value="USD">USD ($)</option>
+          <option value="GEL">GEL (₾)</option>
+          <option value="GBP">GBP (£)</option>
+        </select>
+      </div>
 
-      <select
-        value={currency}
-        onChange={(e) => setCurrency(e.target.value)}
-        className={styles.select}
-      >
-        <option value="USD">USD ($)</option>
-        <option value="GEL">GEL (₾)</option>
-        <option value="GBP">GBP (£)</option>
-        <option value="EUR">EUR (€)</option>
-      </select>
+      <p>
+        {loading
+          ? "Loading..."
+          : currency === "USD"
+            ? `$${Number(converted).toFixed(2)}`
+            : currency === "GEL"
+              ? `${Number(converted).toFixed(2)} ₾`
+              : `${Number(converted).toFixed(2)} £`}
+      </p>
     </div>
   );
 }
