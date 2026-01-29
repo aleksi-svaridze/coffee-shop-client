@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import styles from "./Details.module.css";
-import CurrencySwitch from "../../components/CurrencySwitch/CurrencySwitch";
+import CurrencySwitch from "../../components/CurrencySwitch/CurrencySwitch.jsx";
 import { useState } from "react";
 
 const coffees = [

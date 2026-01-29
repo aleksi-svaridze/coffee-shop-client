@@ -10,7 +10,10 @@ function Cart() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Your Shopping Cart</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Your Shopping Cart</h1>
+        <CurrencySwitch total={total} />
+      </div>
 
       {cart.length === 0 ? (
         <div className={styles.empty}>
@@ -58,7 +61,6 @@ function Cart() {
             </tbody>
           </table>
           <div className={styles.total}>Total: ${total.toFixed(2)}</div>
-          <CurrencySwitch total={total} />;
           <div className={styles.actions}>
             <button className={styles.buy}>Purchase</button>
 

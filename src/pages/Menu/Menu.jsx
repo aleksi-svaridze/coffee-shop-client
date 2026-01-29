@@ -1,5 +1,6 @@
 import styles from "./Menu.module.css";
 import CoffeeCard from "../../components/CoffeeCard/CoffeeCard";
+import CurrencySwitch from "../../components/CurrencySwitch/CurrencySwitch";
 
 const coffees = [
   {
@@ -43,8 +44,10 @@ const coffees = [
 function Menu() {
   return (
     <div>
-      <h1 className={styles.title}>Coffee Selection</h1>
-
+      <div className={styles.header}>
+        <h1 className={styles.title}>Coffee Selection</h1>
+        <CurrencySwitch />
+      </div>
       <div className={styles.grid}>
         {coffees.map((item) => (
           <CoffeeCard key={item.id} coffee={item} />
