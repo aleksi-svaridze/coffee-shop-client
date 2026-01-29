@@ -8,15 +8,13 @@ import Details from "./pages/Details/Details";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Menu />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="/details/:id" element={<Details />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Menu />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="/details/:id" element={<Details />} />
+      </Route>
+    </Routes>
   );
 }
 

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./CoffeeCard.module.css";
+import { useCart } from "../../context/CartContext";
 
 function CoffeeCard({ coffee }) {
+  const { addToCart } = useCart();
+
   return (
     <div className={styles.card}>
       <div className={styles.image}></div>
@@ -13,7 +16,7 @@ function CoffeeCard({ coffee }) {
       <p className={styles.price}>${coffee.price}</p>
 
       <div className={styles.actions}>
-        <button>Add to Cart</button>
+        <button onClick={() => addToCart(coffee)}>Add to Cart</button>
 
         <Link to={`/details/${coffee.id}`} className={styles.details}>
           Details

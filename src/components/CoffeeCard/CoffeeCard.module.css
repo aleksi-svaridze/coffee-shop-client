@@ -9,14 +9,15 @@
 }
 
 .image {
-  height: 120px;
-  background: #e8b79c;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  height: 180px;
+  background-color: #e5b299;
+ background-size: cover;
+
 }
 
 h3 {
   margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 .desc {
@@ -33,16 +34,14 @@ h3 {
 
 .actions {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+ gap: 10px;
 }
 
 button {
   background: #7d5a50;
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
+   border-radius: 6px;
   cursor: pointer;
 }
 

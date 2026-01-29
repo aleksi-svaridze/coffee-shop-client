@@ -1,5 +1,7 @@
 import styles from "./Cart.module.css";
 import CurrencySwitch from "../../components/CurrencySwitch/CurrencySwitch";
+import { useCart } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const { cart, removeFromCart, clearCart } = useCart();
@@ -11,7 +13,17 @@ function Cart() {
       <h1 className={styles.title}>Your Shopping Cart</h1>
 
       {cart.length === 0 ? (
-        <p>Your cart is empty ☹️</p>
+        <div className={styles.empty}>
+          <div className={styles.emptyIcon}>🛒</div>
+
+          <h2>Your cart is empty</h2>
+
+          <p>Add some delicious coffee to your cart!</p>
+
+          <Link to="/" className={styles.backBtn}>
+            Back to shop
+          </Link>
+        </div>
       ) : (
         <>
           <table className={styles.table}>
