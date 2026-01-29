@@ -1,6 +1,7 @@
 import styles from "./Menu.module.css";
 import CoffeeCard from "../../components/CoffeeCard/CoffeeCard";
 import CurrencySwitch from "../../components/CurrencySwitch/CurrencySwitch";
+import { useCart } from "../../context/CartContext";
 
 const coffees = [
   {
@@ -42,6 +43,8 @@ const coffees = [
 ];
 
 function Menu() {
+  const { addToCart } = useCart();
+
   return (
     <div>
       <div className={styles.header}>
@@ -50,7 +53,7 @@ function Menu() {
       </div>
       <div className={styles.grid}>
         {coffees.map((item) => (
-          <CoffeeCard key={item.id} coffee={item} />
+          <CoffeeCard key={item.id} coffee={item} addToCart={addToCart} />
         ))}
       </div>
     </div>
