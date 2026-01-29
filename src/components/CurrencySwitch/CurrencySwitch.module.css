@@ -1,0 +1,25 @@
+.currencySelector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  }
+
+.select {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: #7d5a50;
+  outline: none;
+}
+
+.price {
+  font-weight: bold;
+}
+

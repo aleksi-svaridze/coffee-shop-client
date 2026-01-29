@@ -1,0 +1,62 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.header h2{
+  color: #7d5a50;
+  font-size: 1.8rem;
+}
+
+.coffeeDetails{
+  display: flex;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 40px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+  margin-bottom: 30 px;
+}
+.coffeeDetailsImage{
+  width: 40%;
+  min-height: 350px;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+.coffeeDetailsInfo{
+  width: 60%;
+  padding: 30px;
+}
+
+.price {
+  color:#b4846c;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.desc {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+button {
+  background: #7d5a50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;;
+}
+
+button:hover {
+  background: #5a3e36;
+}
+

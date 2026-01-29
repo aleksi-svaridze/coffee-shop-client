@@ -1,0 +1,17 @@
+.title {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #5a3d32;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 25px;
+}
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
