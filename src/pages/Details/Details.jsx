@@ -73,7 +73,7 @@ function Details() {
           <h1>{coffee.name}</h1>
 
           <p className={styles.price}>
-            {price.toFixed(2)} {currency}
+            {coffee.price.toFixed(2)} {currency}
           </p>
           <p className={styles.desc}>{coffee.desc}</p>
           <button>Add to Cart</button>
